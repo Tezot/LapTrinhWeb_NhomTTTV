@@ -1,0 +1,103 @@
+﻿
+<h2>SSD</h2>
+<div class="row">
+    @foreach (var item in Model)
+    {
+        <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
+            <div class="thumbnail">
+                <div style="text-align:center; font-size:20px">
+                    <strong>@item.Tensp</strong>
+                </div>
+                <div>
+                    <a href="@Url.Action("chitiet", "View", new {@Masp=item.Masp })">
+                        <p><img src=@Url.Content("~/img/"+item.Anhbia) alt="hinh thumnail" style="width: 250px" ; height: 200px"></p>
+                    </a>
+                    @*<p><img src=@Url.Content("~/img/"+item.Anhbia) alt="hinh thumnail" style="width: 250px" ; height: 200px"></p>*@
+                    <p><strong>@item.Giatien</strong>VND</p>
+                    <a href="#" class="btn btn-primary">Mua hàng</a>
+                </div>
+            </div>
+        </div>
+
+    }
+</div>
+<style>
+    .thumbnail {
+        /*width: 250px;
+        float: left;
+        padding: 0;*/
+        margin: 10px auto;
+        position: relative;
+        width: 320px;
+        height: 420px;
+        background: #fff;
+        border-radius: 20px;
+        overflow: hidden;
+        /*box-shadow: 10px 5px #ebebeb;*/
+    }
+
+        .thumbnail::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            font-weight: 600;
+            font-size: 8em;
+            color: rgba(0, 0, 0, 0.1);
+        }
+
+        .thumbnail img {
+            position: relative;
+            width: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding-top: 20px;
+            z-index: 1;
+            height: 250px;
+            transition: 0.5s;
+        }
+
+        .thumbnail .caption {
+            position: relative;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            z-index: 1;
+        }
+
+            .thumbnail .caption h3 {
+                font-size: 10px;
+                color: aliceblue;
+                font-weight: 500;
+                text-transform: uppercase;
+                letter-spacing: 1px;
+            }
+
+            .thumbnail .caption .pull-right {
+                font-size: 24px;
+                color: aliceblue;
+                font-weight: 500;
+                text-transform: none;
+                letter-spacing: 1px;
+            }
+
+        .thumbnail .buy {
+            position: relative;
+            top: 200px;
+            opacity: 0;
+            margin: 0 auto;
+            padding: 8px 30px;
+            margin-top: 0px;
+            color: aliceblue;
+            text-decoration: none;
+            background: #938f63;
+            border-radius: 30px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: 0.5s;
+            font-weight: bold;
+        }
+</style>

@@ -1,0 +1,73 @@
+﻿@model LapTrinhWeb_NhomTTTV.Models.Sanpham
+
+@{
+    ViewBag.Title = "Xoasanpham";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<hr />
+<h2 style="text-align: center;">Thông tin sản phẩm cần xoá</h2>
+
+<h3 style="text-align: center;">Bạn có muốn xoá sản phẩm này không?</h3>
+<div style="text-align:justify">
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            Tên sản phẩm:
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Tensp)
+        </dd>
+
+        <dt>
+
+            Giá bán:
+        </dt>
+
+        <dd>
+            @String.Format("{0:0,0}", Model.Giatien) VNĐ
+        </dd>
+
+        <dt>
+            Mô tả:
+        </dt>
+
+        <dd style="text-align:justify">
+            @Html.DisplayFor(model => model.Mota)
+        </dd>
+
+        <dt>
+            Ảnh:
+        </dt>
+
+        <dd>
+            <img src="@Url.Content("~/img/"+ Model.Anhbia)" width="120px" />
+        </dd>
+
+        <dt>
+            Loại sản phẩm:
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Loaisp.Tenloaisp)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Xoá" class="btn btn-success" />
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="btn btn-primary">
+                <a href="@Url.Action("Sanpham", "Admin")" style="text-decoration:none; color:black">Quay lại</a>
+            </div>
+        </div>
+    }
+</div>

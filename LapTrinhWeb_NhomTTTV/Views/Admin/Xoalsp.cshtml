@@ -1,0 +1,41 @@
+﻿@model LapTrinhWeb_NhomTTTV.Models.Loaisp
+
+@{
+    ViewBag.Title = "Xoalsp";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<hr />
+<h2 style="text-align: center;">Thông tin loại sản phẩm cần xoá</h2>
+
+<h3 style="text-align: center;">Bạn có muốn xoá loại sản phẩm này không?</h3>
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        @Html.HiddenFor(model => model.Maloaisp)
+        <dt>
+            Tên sản phẩm:
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Tenloaisp)
+        </dd>
+    </dl>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Xoá" class="btn btn-success" />
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="btn btn-primary">
+                <a href="@Url.Action("DSloaisp", "Admin")" style="text-decoration:none; color:black">Quay lại</a>
+            </div>
+        </div>
+    }
+</div>

@@ -1,0 +1,47 @@
+﻿@model PagedList.IPagedList<LapTrinhWeb_NhomTTTV.Models.Loaisp>
+@using LapTrinhWeb_NhomTTTV.Models;
+@using PagedList.Mvc;
+@{
+    ViewBag.Title = "DSloaisp";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2 style="text-align:center; font-size: 26px;">Quản lý Loại Sản Phẩm</h2>
+<p>
+    <a href="@Url.Action("Themlsp", "Admin")" class="btn btn-success" style="text-decoration:none; color:black">Thêm mới</a>
+</p>
+<table class="table table-bordered">
+    <tr>
+        <th>
+            Mã loại sản phẩm
+        </th>
+        <th>
+            Tên loại sản phẩm
+        </th>
+        <th>
+            Chức năng
+        </th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Maloaisp)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Tenloaisp)
+            </td>
+            <td>
+                <div class="btn btn-success">
+                    <a href="@Url.Action("Sualsp", "Admin", new { id = item.Maloaisp })" style="text-decoration:none; color:black">Sửa</a>
+                </div>
+                <hr />
+                <div class="btn btn-success">
+                    <a href="@Url.Action("Xoalsp", "Admin", new { id = item.Maloaisp })" style="text-decoration:none; color:black">Xoá</a>
+                </div>
+            </td>
+        </tr>
+    }
+
+</table>

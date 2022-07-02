@@ -1,0 +1,33 @@
+﻿@model LapTrinhWeb_NhomTTTV.Models.Loaisp
+@{
+    ViewBag.Title = "Themlsp";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+@using (Html.BeginForm("Themlsp", "Admin", FormMethod.Post, new { @enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+    <div class="form-horizontal">
+        <h4>Thêm loại sản phẩm</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+            <label>Tên Sản Phẩm</label>
+            <div class="col-md-10">
+                <input required type="text" name="Ten" placeholder="Tên Sản Phẩm..." style="border-radius: 12px" />
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Thêm mới" class="btn btn-success" />
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="btn btn-primary">
+                <a href="@Url.Action("DSloaisp", "Admin")" style="text-decoration:none; color:black">Quay lại</a>
+            </div>
+        </div>
+    </div>
+}
+
