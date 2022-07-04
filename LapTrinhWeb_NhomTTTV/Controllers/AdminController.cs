@@ -180,7 +180,7 @@ namespace LapTrinhWeb_NhomTTTV.Controllers
         {
             if (Session["Taikhoanadmin"] == null)
             {
-                return RedirectToAction("Sanpham", "Admin");
+                return RedirectToAction("Login", "Admin");
             }
             Sanpham sp = data.Sanphams.SingleOrDefault(n => n.Masp == id);
             
@@ -199,7 +199,7 @@ namespace LapTrinhWeb_NhomTTTV.Controllers
             var img = "";
             if (Session["Taikhoanadmin"] == null)
             {
-                return RedirectToAction("Sanpham", "Admin");
+                return RedirectToAction("Login", "Admin");
             }
             if (fileupload != null)
             {

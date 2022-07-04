@@ -1,6 +1,7 @@
-﻿@model PagedList.IPagedList<LapTrinhWeb_NhomTTTV.Models.Sanpham>
-@using LapTrinhWeb_NhomTTTV.Models;
-@using PagedList.Mvc;
+﻿@*@model PagedList.IPagedList<LapTrinhWeb_NhomTTTV.Models.Sanpham>
+    @using LapTrinhWeb_NhomTTTV.Models;
+    @using PagedList.Mvc;*@
+@model IEnumerable<LapTrinhWeb_NhomTTTV.Models.Sanpham>
 @{
     ViewBag.Title = "KetQuaTimKiem";
     Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
@@ -62,7 +63,9 @@
                     <div class="btn btn-success">
                         <a href="@Url.Action("ChitietSP", "Admin", new { id = item.Masp })" style="text-decoration:none; color:black">Chi tiết</a>
                     </div>|
-                    @Html.ActionLink("Xoá", "Delete", new { id = item.Masp })
+                    <div class="btn btn-success">
+                        <a href="@Url.Action("Xoasanpham", "Admin", new { id = item.Masp })" style="text-decoration:none; color:black">Xoá</a>
+                    </div>
                 </td>
             </tr>
         }
@@ -70,10 +73,10 @@
     <!-- Thêm mã phân trang -->
     <br />
 
-    Trang @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) / @Model.PageCount
+    @*Trang @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) / @Model.PageCount
 
-    @Html.PagedListPager(Model, page => Url.Action("Sanpham",
-            new { page }))
+        @Html.PagedListPager(Model, page => Url.Action("Sanpham",
+                new { page }))*@
 
     <!-- Kết thúc -->
 </div>

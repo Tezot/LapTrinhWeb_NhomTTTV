@@ -28,5 +28,36 @@ namespace LapTrinhWeb_NhomTTTV.Controllers
         {
             return View();
         }
+        public ActionResult KetQuaTimKiem(FormCollection f)
+        {
+
+            if (f["txtTimKiem"] == null)
+            {
+
+                List<Sanpham> lstKQTK = data.Sanphams.Where(n => n.Tensp.Contains((string)Session["TuKhoa"])).ToList();
+
+                if (lstKQTK.Count == 0)
+                {
+                    ViewBag.ThongBaoTimKiem = "Không tìm thấy sản phẩm nào";
+                    return View(data.Sanphams.OrderBy(n => n.Tensp));
+                }
+                ViewBag.ThongBaoTimKiem = "Đã tìm thấy " + lstKQTK.Count + " kết quả !";
+                return View(lstKQTK.OrderBy(n => n.Tensp));
+            }
+            else
+            {
+                string sTuKhoa = f["txtTimKiem"].ToString();
+                Session["TuKhoa"] = sTuKhoa;
+                List<Sanpham> lstKQTK = data.Sanphams.Where(n => n.Tensp.Contains(sTuKhoa)).ToList();
+
+                if (lstKQTK.Count == 0)
+                {
+                    ViewBag.ThongBaoTimKiem = "Không tìm thấy sản phẩm nào";
+                    return View(data.Sanphams.OrderBy(n => n.Tensp));
+                }
+                ViewBag.ThongBaoTimKiem = "Đã tìm thấy " + lstKQTK.Count + " kết quả !";
+                return View(lstKQTK.OrderBy(n => n.Tensp));
+            }
+        }
     }
 }
