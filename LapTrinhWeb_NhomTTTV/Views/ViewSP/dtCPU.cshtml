@@ -12,7 +12,11 @@
                     </a>
                     @*<p><img src=@Url.Content("~/img/"+item.Anhbia) alt="hinh thumnail" style="width: 250px" ; height: 200px"></p>*@
                     <p><strong>@item.Giatien</strong>VND</p>
-                    <a href="#" class="btn btn-primary">Mua hàng</a>
+                    @using (Html.BeginForm("ThemGiohang", "GioHang", new { @iMasp = item.Masp, @strURL = Request.Url.ToString() }))
+                    {
+                        <input type="submit" value="Mua hàng" class="btn btn-success" />
+
+                    }
                 </div>
             </div>
         </div>  

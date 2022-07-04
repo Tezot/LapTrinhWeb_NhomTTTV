@@ -128,6 +128,7 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\AdminController.cs" />
+    <Compile Include="Controllers\GioHangController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\MaHoa.cs" />
     <Compile Include="Controllers\UserController.cs" />
@@ -135,6 +136,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\GioHang.cs" />
     <Compile Include="Models\QLLKDT.designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -252,6 +254,7 @@
     <Content Include="img\fan4.jpg" />
     <Content Include="img\fan5.jpg" />
     <Content Include="img\fan_cooler.jpg" />
+    <Content Include="img\Giohang.png" />
     <Content Include="img\gpu1.jpg" />
     <Content Include="img\gpu2.jpg" />
     <Content Include="img\gpu3.jpg" />
@@ -468,6 +471,10 @@
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\User\DangKy.cshtml" />
     <Content Include="Views\User\Dangnhap.cshtml" />
+    <Content Include="Views\GioHang\GioHang.cshtml" />
+    <Content Include="Views\GioHang\GiohangPartial.cshtml" />
+    <Content Include="Views\GioHang\DatHang.cshtml" />
+    <Content Include="Views\GioHang\Xacnhandonhang.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
