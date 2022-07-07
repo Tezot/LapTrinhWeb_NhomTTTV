@@ -80,6 +80,7 @@ namespace LapTrinhWeb_NhomTTTV.Controllers
             }
             return View();
         }
+        //----------------------------------- Sản Phẩm ------------------------------------
         public ActionResult Sanpham(int? page)
         {
             if (Session["Taikhoanadmin"] == null)
@@ -102,8 +103,6 @@ namespace LapTrinhWeb_NhomTTTV.Controllers
             }
             return View(tbsanpham);
         }
-
-        //----------------------------------- Sản Phẩm ------------------------------------
         //Thêm mới sản phẩm
         [HttpGet]
         public ActionResult Themmoisanpham()
@@ -369,6 +368,104 @@ namespace LapTrinhWeb_NhomTTTV.Controllers
                 data.Loaisps.DeleteOnSubmit(lsp);
                 data.SubmitChanges();
                 return RedirectToAction("DSloaisp");
+            }
+        }
+        //----------------------------------- Đơn hàng ------------------------------------
+        public ActionResult DSdonhang(int? page)
+        {
+            if (Session["Taikhoanadmin"] == null)
+            {
+                return RedirectToAction("Login", "Admin");
+            }
+            int pagesize = 10;
+            int pageNum = (page ?? 1);
+            var list = data.Donhangs.OrderBy(s => s.Madon).ToList();
+            return View(list.ToPagedList(pageNum, pagesize));
+        }
+        public ActionResult ChitietDH(int id)
+        {
+            Donhang ctdh = data.Donhangs.SingleOrDefault(n => n.Madon == id);
+            ViewBag.Madon = ctdh.Madon;
+            if (ctdh == null)
+            {
+                Response.StatusCode = 404;
+                return null;
+            }
+            return View(ctdh);
+        }
+        public ActionResult Suadonhang(int id)
+        {
+            if (Session["Taikhoanadmin"] == null)
+            {
+                return RedirectToAction("Login", "Admin");
+            }
+            else
+            {
+                Donhang dh = data.Donhangs.SingleOrDefault(n => n.Madon == id);
+                if (dh == null)
+                {
+                    Response.StatusCode = 404;
+                    return null;
+                }
+                return View(dh);
+            }
+        }
+
+        [HttpPost, ActionName("Suadonhang")]
+        public ActionResult XacNhanSuaDonHang(FormCollection collection, int id)
+        {
+            if (Session["Taikhoanadmin"] == null)
+            {
+                return RedirectToAction("Login", "Admin");
+            }
+            Donhang dh = data.Donhangs.SingleOrDefault(n => n.Madon == id);
+            if (dh == null)
+            {
+                Response.StatusCode = 404;
+                return null;
+            }
+            UpdateModel(dh);
+            data.SubmitChanges();
+            return RedirectToAction("DSdonhang");
+        }
+        [HttpGet]
+        public ActionResult Xoadonhang(int id)
+        {
+            if (Session["Taikhoanadmin"] == null)
+            {
+                return RedirectToAction("Login", "Admin");
+            }
+            else
+            {
+                Donhang dh = data.Donhangs.SingleOrDefault(n => n.Madon == id);
+                ViewBag.Madon = dh.Madon;
+                if (dh == null)
+                {
+                    Response.StatusCode = 404;
+                    return null;
+                }
+                return View(dh);
+            }
+        }
+        [HttpPost, ActionName("Xoadonhang")]
+        public ActionResult XacNhanXoaDonHang(int id)
+        {
+            if (Session["Taikhoanadmin"] == null)
+            {
+                return RedirectToAction("Login", "Admin");
+            }
+            else
+            {
+                Donhang dh = data.Donhangs.SingleOrDefault(n => n.Madon == id);
+                ViewBag.Madon = dh.Madon;
+                if (dh == null)
+                {
+                    Response.StatusCode = 404;
+                    return null;
+                }
+                data.Donhangs.DeleteOnSubmit(dh);
+                data.SubmitChanges();
+                return RedirectToAction("DSdonhang");
             }
         }
     }

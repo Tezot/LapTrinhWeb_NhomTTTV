@@ -6,7 +6,7 @@
     Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
 }
 
-<h2 style="text-align:center; font-size: 26px;">Quản lý Loại Sản Phẩm</h2>
+<h2 style="text-align:center; font-size: 26px;">Quản Lý Loại Sản Phẩm</h2>
 <p>
     <a href="@Url.Action("Themlsp", "Admin")" class="btn btn-success" style="text-decoration:none; color:black">Thêm mới</a>
 </p>
@@ -36,7 +36,7 @@
                 <div class="btn btn-success">
                     <a href="@Url.Action("Sualsp", "Admin", new { id = item.Maloaisp })" style="text-decoration:none; color:black">Sửa</a>
                 </div>
-                <hr />
+                
                 <div class="btn btn-success">
                     <a href="@Url.Action("Xoalsp", "Admin", new { id = item.Maloaisp })" style="text-decoration:none; color:black">Xoá</a>
                 </div>

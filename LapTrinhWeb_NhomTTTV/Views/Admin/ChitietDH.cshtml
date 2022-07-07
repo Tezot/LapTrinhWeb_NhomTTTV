@@ -1,0 +1,165 @@
+﻿@model LapTrinhWeb_NhomTTTV.Models.Donhang
+@{
+    ViewBag.Title = "ChitietDH";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+<hr />
+<h2 style="text-align: center;">THÔNG TIN CHI TIẾT ĐƠN HÀNG</h2>
+
+<div style="text-align:justify">
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            Ngày đặt
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Ngaydat)
+        </dd>
+
+        <dt>
+            Ngày giao
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Ngaygiao)
+        </dd>
+
+        <dt>
+            Tình trạng
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Tinhtrang)
+        </dd>
+
+        <dt>
+            Tên người đặt
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Nguoidung.Hoten)
+        </dd>
+
+        <dt>
+            Điện thoại
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Nguoidung.Dienthoai)
+        </dd>
+
+        <dt>
+            Địa chỉ
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Nguoidung.Diachi)
+        </dd>
+
+        @*<dt>
+                Tổng tiền
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Chitietdonhangs.Tha)
+            </dd>*@
+    </dl>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <div class="return">
+                <a href="@Url.Action("Suadonhang", "Admin", new { id = Model.Madon })" style="text-decoration:none; color:black">Chỉnh sửa</a>
+            </div>
+            <div class="return">
+                <a href="@Url.Action("DSdonhang", "Admin")" style="text-decoration:none; color:black">Quay lại</a>
+            </div>
+        </div>
+    }
+</div>
+<style>
+    .return {
+        margin-left: 39%;
+        margin-top: 25px;
+        margin-bottom: 25px;
+        color: black;
+        background: #28a745;
+        border: none;
+        padding: 0.7em 95px;
+        outline: none;
+        width: 22%;
+        font-size: 1em;
+        cursor: pointer;
+        letter-spacing: 1px;
+        font-weight: 400;
+        font-family: 'Open Sans', sans-serif;
+        transition: 0.5s all;
+        -webkit-transition: 0.5s all;
+        border-radius: 30px;
+        text-align: center
+    }
+
+        .return:hover {
+            color: #ea2858;
+            background: #006400;
+        }
+
+    @@media(max-width: 1040px) {
+        .return {
+            margin-left: 8%;
+            padding: 0.7em 90px;
+            margin-top: 0px;
+            width: 44%;
+        }
+    }
+
+    @@media(max-width: 780px) {
+
+
+        .return {
+            margin-left: 8%;
+            padding: 0.7em 60px;
+            margin-top: 0px;
+            width: 44%;
+        }
+    }
+
+    @@media(max-width: 430px) {
+
+
+        .return {
+            margin-left: 8%;
+            padding: 0.7em 37px;
+            margin-top: 0px;
+            width: 44%;
+            padding: 0.7em 35px;
+        }
+    }
+
+    @@media(max-width: 380px) {
+
+
+        .return {
+            margin-left: 6%;
+            margin-top: 0px;
+            width: 49%;
+            padding: 0.7em 35px;
+        }
+    }
+
+    @@media(max-width: 320px) {
+
+
+        .return {
+            margin-left: 6%;
+            margin-top: 0px;
+            width: 49%;
+            padding: 0.7em 25px;
+        }
+    }
+</style>
+
+

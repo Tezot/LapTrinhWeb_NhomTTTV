@@ -13,7 +13,7 @@ namespace LapTrinhWeb_NhomTTTV.Controllers
         // GET: ViewSP
         public ActionResult dtCPU()
         {
-            var test = from sp in data.Sanphams where sp.Maloaisp == 1 && sp.Masp < 3 select sp;
+            var test = from sp in data.Sanphams where sp.Maloaisp == 1  select sp;
             return PartialView(test);
         }
         public ActionResult dtGPU()

@@ -24,7 +24,7 @@
 </head>
 <body class="sb-nav-fixed">
     <nav class="sb-topnav navbar navbar-expand navbar-dark bg-success">
-        <h3>@Html.ActionLink("TTTV SHOP", "Index", "Home", new { @class = "menu1" })</h3>
+        <h3><a href="@Url.Action("Sanpham", "Admin")" style="text-decoration:none; color:white">NHÓM TTTV</a></h3>
         <button class="btn btn-link btn-sm order-1 order-lg-0" id="sidebarToggle" href="#">
             <i class="fas fa-bars"></i>
         </button><!-- Navbar Search-->
@@ -33,7 +33,7 @@
                 @using (Html.BeginForm("KetQuaTimKiem", "Admin", FormMethod.Post, new { }))
                 {
                     <input type="search" name="txtTimKiem" placeholder="Nhập tên sản phẩm" required autocomplete="off">
-                    <button class="btn btn-primary" type="submit"><i class="fas fa-search"></i></button>
+                    @*<button class="btn btn-primary" type="submit"><i class="fas fa-search"></i></button>*@
 
                 }
                 @*<div class="input-group-append">
@@ -66,6 +66,10 @@
                         <br />
                         <div style="padding-left:20px">
                             <a href="@Url.Action("DSloaisp", "Admin")" style="text-decoration:none; color:white">Loại sản phẩm</a>
+                        </div>
+                        <br />
+                        <div style="padding-left:20px">
+                            <a href="@Url.Action("DSdonhang", "Admin")" style="text-decoration:none; color:white">Đơn hàng</a>
                         </div>
                         <br />
                     </div>

@@ -158,7 +158,7 @@ namespace LapTrinhWeb_NhomTTTV.Controllers
             ddh.Ngaydat = DateTime.Now;
             var ngaygiao = String.Format("{0:MM/dd/yyyy}", collection["Ngaygiao"]);
             ddh.Ngaygiao = DateTime.Parse(ngaygiao);
-            ddh.Tinhtrang = 0;
+            ddh.Tinhtrang = -1;
             //ddh.Dathanhtoan = false;
             data.Donhangs.InsertOnSubmit(ddh);
             data.SubmitChanges();
@@ -170,6 +170,7 @@ namespace LapTrinhWeb_NhomTTTV.Controllers
                 ctdh.Masp = item.iMasp;
                 ctdh.Soluong = item.iSoluong;
                 ctdh.Dongia = (decimal)item.dDongia;
+                ctdh.Thanhtien = (decimal)item.dThanhtien;
                 data.Chitietdonhangs.InsertOnSubmit(ctdh);
             }
             data.SubmitChanges();
